@@ -1,0 +1,192 @@
+{
+  "IDM": {
+    "GENERAL" : {
+      "MAIN-TITLE": "Activiti - 身份管理",
+      "NAVIGATION": {
+        "PROFILE": "个人",
+        "USER-MGMT": "用户",
+        "GROUP-MGMT": "组"
+      },
+      "ACTION": {
+        "CANCEL": "取消",
+        "CREATE": "创建",
+        "SAVE": "保存",
+        "CLOSE": "关闭",
+        "LOGOUT": "登出",
+        "ABOUT": "关于 Alfresco Activiti"
+      },
+      "ERROR": {
+        "GENERIC": "对不起，一个错误发生了。",
+        "UNKNOWN": "对不起，在执行所请求的操作时发生了错误。",
+        "BAD_REQUEST": "在执行请求操作时出现错误",
+        "NOT_FOUND": "你试图访问的资源并不存在",
+        "UNAUTHORIZED": "你应该签到，以便执行所要求的操作。",
+        "FORBIDDEN": "你不被允许执行所要求的操作",
+        "INTERNAL_SERVER_ERROR": "对不起，在执行所请求的操作时出现了一个意外的错误。"
+      }
+    },
+    "USER-MGMT": {
+      "TITLE": "匹配用户",
+      "CREATE-USER": "创建用户",
+      "NAME-SEARCH": "通过名称搜索",
+      "COMPANY": "公司",
+      "STATUS": "状态",
+      "ACCOUNT": "账户类型",
+      "ACTIONS": "选择一个动作",
+      "CHANGE-STATUS": "更改状态",
+      "CHANGE-ACCOUNT-TYPE": "更改用户类型",
+      "CHANGE-PASSWORD": "更改密码",
+      "EDIT-USER": "更改细节",
+      "DELETE-USERS": "删除",
+      "TOTAL-USERS": "全部",
+      "INACTIVE-USERS": "冻结",
+      "ENTERPRISE-USERS": "企业",
+      "ACTIVE-USERS": "激活",
+      "DELETED-USERS": "删除",
+      "ORDER-BY": "排序",
+      "SHOW-NEXT": "下一个",
+      "SHOW-PREVIOUS": "上一个",
+      "NO-MATCHING-USERS": "找不到匹配的用户",
+      "MATCHING-USERS": "找到总数匹配的用户 {{total | number}}, 从 {{start + 1}} 到 {{start + size}}",
+      "ID": "ID",
+      "EMAIL": "电子邮件",
+      "NAME": "名字",
+      "CREATED": "创造",
+      "TYPE": "类型",
+      "EXTERNAL-ID": "外部id",
+      "LAST-SYNC-TIME": "最近更新时间",
+      "FILTERS": {
+        "STATUS-ANY": "任意状态",
+        "STATUS-ACTIVE": "激活",
+        "STATUS-INACTIVE": "冻结",
+        "STATUS-PENDING": "等待",
+        "STATUS-DELETED": "删除",
+        "TYPE-ANY": "任意类型",
+        "SORT-DATE-NEWEST": "最新创建日期",
+        "SORT-DATE-OLDEST": "旧的创建日期",
+        "SORT-EMAIL-A": "邮件, A-Z",
+        "SORT-EMAIL-Z": "邮件, Z-A",
+        "SORT-ID-A": "用户id, A-Z",
+        "SORT-ID-Z": "用户id, Z-A"
+      },
+      "POPUP": {
+        "CREATE-TITLE": "创建用户",
+        "EDIT-TITLE": "编辑用户详细信息",
+        "CREATE-ID": "用户id",
+        "CREATE-EMAIL": "电子邮件",
+        "CREATE-INVALID-EMAIL": "无效的",
+        "CREATE-PASSWORD": "密码",
+        "CREATE-FIRSTNAME": "名字",
+        "CREATE-LASTNAME": "姓",
+        "CREATE-TENANT": "租户",
+        "CREATE-COMPANY": "公司",
+        "CREATE-STATUS": "状态",
+        "CREATE-TYPE": "类型",
+        "BULK-UPDATE-TITLE": "批量更新用户",
+        "BULK-UPDATE-NEW-STATUS": "新状态:",
+        "BULK-UPDATE-NEW-TYPE": "新的帐户类型:",
+        "BULK-UPDATE-EMAIL-NOTIFICATIONS": "发送状态改变的电子邮件通知",
+        "BULK-UPDATE-STATUS-USERS": "您将更新这些{{length}}用户的状态:",
+        "BULK-UPDATE-TYPE-USERS": "您将要更新这些{{length}}用户的类型:",
+        "BULK-UPDATE-CANCEL": "取消并关闭",
+        "BULK-UPDATE-CONFIRM": "更新用户",
+        "BULK-UPDATE-PASSWORD-TITLE": "更改密码",
+        "BULK-UPDATE-PASSWORD": "密码",
+        "BULK-UPDATE-PASSWORD-REPEAT": "重复密码",
+        "BULK-UPDATE-PASSWORD-CONFIRM": "修改"
+      }
+    },
+    "FUNCTIONAL-GROUP-MGMT": {
+      "CREATE": "创建组",
+      "NO-GROUPS": "没有发现组",
+      "NO-SELECTION": "从左边的列表中选择一个组",
+      "SYNC-DETAILS": "同步细节",
+      "EXTERNAL-ID": "外部id:",
+      "LAST-SYNC-TIME": "最后更新:",
+      "MEMBERS": "组成员",
+      "SUBGROUPS": "子组",
+      "NO-MEMBERS": "没有发现用户",
+      "ADD-USER": "+添加用户",
+      "ADD-SUBGROUP": "+添加子组",
+      "NO-SUBGROUPS": "没有发现子组",
+      "USER-ADDED": "用户已被添加到组中",
+      "INACTIVE": "停用",
+      "INACTIVE-DESCRIPTION": "这个群体已经被停用了。用户仍然可以完成当前分配给这个组的任务，但是新的流程定义不能再使用这个组了。",
+      "ADD-POPOVER-TITLE": "选择用户",
+      "POPUP": {
+        "CREATE-TITLE": "创建组",
+        "CREATE-ID": "组id",
+        "CREATE-NAME": "名字",
+        "DELETE-TITLE": "删除组",
+        "DELETE-DESCRIPTION": "你确定你想删除这个组吗?",
+        "DELETE-CONFIRM": "确认",
+        "DEACTIVATE-TITLE": "禁用",
+        "DEACTIVATE-DESCRIPTION": "你确定你想删除这个组吗? 这也会删除所有的子组。 请注意，一个组将首先被禁用，这样就可以正确地完成进程的任务。第二次点击删除按钮将完全删除该群组。",
+        "DELETE-MEMBER-TITLE": "删除群成员",
+        "DELETE-MEMBER-DESCRIPTION": "您确定您想要从组中删除这个用户吗?",
+        "DELETE-CONFIRM": "确认",
+        "ADD-MEMBER-TITLE": "添加用户",
+        "ADD-MEMBER-NO-USERS": "没有发现用户",
+        "ADD-MEMBER-CONFIRM": "添加 ({{selectedUsers.length}})",
+        "ACTIVATE-TITLE": "激活组",
+        "ACTIVATE-DESCRIPTION": "再次激活这个组? 这意味着这个组将再次被用于任务分配。注意，一个组的子组在缺省情况下不会被激活。",
+        "ACTIVATE-CONFIRM": "激活",
+        "EDIT-TITLE": "编辑组"
+      }
+    },
+    "PROFILE-MGMT": {
+      "CREATED": "注册时间",
+      "CHANGE-PASSWORD": "更改密码",
+      "DETAILS": "详情",
+      "DETAILS-DESCRIPTION": "点击下面的任何一个字段来改变它们",
+      "FIRST-NAME": "名字",
+      "NOTHING-SET": "未设置",
+      "LAST-NAME": "姓",
+      "EMAIL": "电子邮件",
+      "COMPANY": "公司",
+      "GROUPS": "你的组织",
+      "POPUP": {
+        "UPLOAD-PICTURE-TITLE": "改变照片",
+        "UPLOAD-PICTURE-DESCRIPTION": "请从您的计算机中选择一个图像，或者将它放到下面的区域中。",
+        "UPLOAD-PICTURE-CANCEL-UPLOAD": "取消上传",
+        "UPLOAD-PICTURE-DROPZONE": "将图像拖动到此处",
+        "UPLOAD-PICTURE-NO-DROP": "您的浏览器不支持拖拽",
+        "UPLOAD-PICTURE-ERROR": "错误",
+        "CHANGE-PASSWORD-TITLE": "更改密码",
+        "CHANGE-PASSWORD-ORIGINAL": "初始密码",
+        "CHANGE-PASSWORD-NEW-PASSWORD": "新密码",
+        "CHANGE-PASSWORD-NEW-PASSWORD2": "重复新密码",
+        "CHANGE-PASSWORD-CONFIRM": "确认",
+        "CHANGE-PASSWORD-NOT-MATCHING": "密码不匹配",
+        "CHANGE-PASSWORD-INVALID": "无效的密码"
+      }
+    },
+    "USERS": {
+      "TITLE": "用户管理",
+      "ACTION": {
+        "CREATE": "创建用户"
+      }
+    }
+  },
+  "GENERAL": {
+    "ACTION": {
+      "CLOSE": "关闭"
+    },
+    "MESSAGE": {
+      "SELECT-PEOPLE-HELP": "使用&uparrow;和&downarrow;选择并按下enter确认",
+      "SELECT-GROUP-HELP": "使用&uparrow;和&downarrow;选择并按下enter确认",
+      "SELECT-GROUP-SEARCH-PLACEHOLDER": "搜索组",
+      "SELECT-GROUP-NO-MATCHING-RESULTS": "使用上面的搜索框来查找组。"
+    },
+    "TITLE": {
+      "MATCHING-PEOPLE": "匹配的人",
+      "SELECT-GROUP": "选择组",
+      "MATCHING-GROUPS": "匹配组"
+    }
+  },
+  "INVOLVE-PEOPLE": {
+    "ACTION-SELECT": "选择",
+    "SEARCH-PLACEHOLDER": "通过名称搜索",
+    "NO-MATCHING-RESULTS": "使用上面的搜索框找到用户"
+  }
+}
