@@ -12,8 +12,13 @@
  */
 package org.activiti.app.rest.editor;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 
 import org.activiti.app.domain.editor.Model;
 import org.activiti.app.model.editor.ModelKeyRepresentation;
@@ -24,9 +29,15 @@ import org.activiti.app.service.api.ModelService;
 import org.activiti.app.service.exception.BadRequestException;
 import org.activiti.app.service.exception.ConflictingRequestException;
 import org.activiti.app.service.exception.InternalServerErrorException;
+import org.activiti.app.service.mongo.MongoService;
+import org.activiti.app.service.producer.Publisher;
 import org.activiti.bpmn.converter.BpmnXMLConverter;
+import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.editor.language.json.converter.BpmnJsonConverter;
+import org.activiti.engine.RepositoryService;
 import org.activiti.engine.identity.User;
+import org.activiti.engine.repository.Deployment;
+import org.activiti.engine.repository.DeploymentBuilder;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +56,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import javax.annotation.Resource;
+import javax.inject.Inject;
 
 @RestController
 public class ModelResource extends AbstractModelResource {
@@ -67,6 +81,14 @@ public class ModelResource extends AbstractModelResource {
     protected BpmnJsonConverter bpmnJsonConverter = new BpmnJsonConverter();
 
     protected BpmnXMLConverter bpmnXMLConverter = new BpmnXMLConverter();
+
+    @Inject
+    MongoService mongoService;
+    @Inject
+    Publisher publisher;
+
+    @Resource
+    protected RepositoryService repositoryService;
 
     /**
      * GET /rest/models/{modelId} -> Get process model
@@ -193,6 +215,7 @@ public class ModelResource extends AbstractModelResource {
         String resolveAction = values.getFirst("conflictResolveAction");
 
         // If timestamps differ, there is a conflict or a conflict has been resolved by the user
+        long time = model.getLastUpdated().getTime();
         if (model.getLastUpdated().getTime() != lastUpdated) {
 
             if (RESOLVE_ACTION_SAVE_AS.equals(resolveAction)) {
@@ -265,6 +288,7 @@ public class ModelResource extends AbstractModelResource {
         try {
             model = modelService.saveModel(model.getId(), name, key, description, json, newVersion,
                     newVersionComment, SecurityUtils.getCurrentUserObject());
+            deployProcess(model);
             return new ModelRepresentation(model);
 
         } catch (Exception e) {
@@ -279,6 +303,17 @@ public class ModelResource extends AbstractModelResource {
         model.setDescription(description);
         model.setModelType(modelType);
         Model newModel = modelService.createModel(model, editorJson, SecurityUtils.getCurrentUserObject());
+        deployProcess(newModel);
         return new ModelRepresentation(newModel);
+    }
+
+    protected void deployProcess(Model model) {
+        BpmnModel bpmnModel = modelService.getBpmnModel(model);
+        byte[] xmlBytes = modelService.getBpmnXML(bpmnModel);
+        BufferedInputStream in = new BufferedInputStream(new ByteArrayInputStream(xmlBytes));
+
+        String store = mongoService.store(in, model.getKey().replaceAll(":", "-") + "-" + model.getVersion() + ".bpmn20.xml");
+        String msg = model.getKey() + ":" + store + ":" + model.getVersion();
+        publisher.publishMessage(msg);
     }
 }

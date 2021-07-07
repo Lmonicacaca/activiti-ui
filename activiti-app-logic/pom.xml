@@ -11,19 +11,6 @@
   </parent>
   <packaging>jar</packaging>
 
-<!--  <distributionManagement>-->
-<!--    <repository>-->
-<!--      <id>releases</id>-->
-<!--      <name>Internal Releases</name>-->
-<!--      <url>http://192.168.100.110:8081/nexus/content/repositories/releases</url>-->
-<!--    </repository>-->
-<!--    <snapshotRepository>-->
-<!--      <id>Snapshots</id>-->
-<!--      <name>Internal Snapshots</name>-->
-<!--      <url>http://192.168.100.110:8081/nexus/content/repositories/snapshots</url>-->
-<!--    </snapshotRepository>-->
-<!--  </distributionManagement>-->
-
   <dependencies>
     <!--nacos-->
     <dependency>
